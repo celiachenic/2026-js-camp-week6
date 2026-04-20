@@ -152,7 +152,7 @@ async function removeCartItem(cartId) {
   // 請實作此函式
   // 提示：發送 DELETE 請求到 /carts/{id}
   const response = await fetch(
-    `${BASE_URL}/api/livejs/v1/customer/${API_PATH}//carts/${cartId}`,
+    `${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts/${cartId}`,
     {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -173,13 +173,13 @@ async function clearCart() {
   // 請實作此函式
   // 提示：發送 DELETE 請求到 /carts
   const response = await fetch(
-    `${BASE_URL}/api/livejs/v1/customer/${API_PATH}//carts`,
+    `${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`,
     {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     },
   );
-  const data = response.json();
+  const data = await response.json();
   if (!response.ok) {
     throw new Error(`發生錯誤：${data.message}`);
   }

@@ -44,10 +44,11 @@ async function getCart() {
     `${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`,
   );
   const data = await response.json();
+  const { carts, total, finalTotal } = data;
   return {
-    carts: data.carts,
-    total: data.total,
-    finalTotal: data.finalTotal,
+    carts,
+    total,
+    finalTotal,
   };
 }
 
@@ -67,7 +68,6 @@ async function getProductsSafe() {
       `${BASE_URL}/api/livejs/v1/customer/${API_PATH}/products`,
     );
     const data = await response.json();
-
     if (!response.ok) {
       throw new Error(`發生錯誤：${data.message}`);
     }
